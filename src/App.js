@@ -1,5 +1,5 @@
 import React from 'react';
-import NearestLocations from './NearestLocations';
+import NearestLocations from './NearestLocations.jsx';
 
 function App() {
   return (

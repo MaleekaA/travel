@@ -3,13 +3,17 @@ from flask_cors import CORS
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 
+
 app = Flask(__name__)
 CORS(app)
-
+CORS(app, resources={r"/api/*": {"origins": "https://your-react-app-url.com"}})
 # Load data from CSV files
-places_df = pd.read_csv('placess.csv')
-malls_df = pd.read_csv('mallss.csv')
-restaurants_df = pd.read_csv('restaurantss.csv')
+import os
+base_dir = os.path.abspath(os.path.dirname(__file__))
+places_df = pd.read_csv(os.path.join(base_dir,'..','public', 'placess.csv'))
+malls_df = pd.read_csv(os.path.join(base_dir, '..','public', 'mallss.csv'))
+restaurants_df = pd.read_csv(os.path.join(base_dir,'..', 'public', 'restaurantss.csv'))
+
 
 # Function to find nearest shopping malls and restaurants given a place name
 def find_nearest_locations(places_df, malls_df, restaurants_df, place_name, n_neighbors=4):
@@ -45,4 +49,5 @@ def nearest_locations():
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
 
-# No need for app.run() here
+if __name__ == '__main__':
+    app.run(debug=True)
