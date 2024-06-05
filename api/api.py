@@ -6,7 +6,7 @@ from sklearn.neighbors import NearestNeighbors
 
 app = Flask(__name__)
 CORS(app)
-CORS(app, resources={r"/api/*": {"origins": "https://your-react-app-url.com"}})
+CORS(app, resources={r"/api/*": {"origins": "https://travel-1-txo3.onrender.com"}})
 # Load data from CSV files
 import os
 base_dir = os.path.abspath(os.path.dirname(__file__))
