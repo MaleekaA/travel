@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
 
   try {
     // Fetch data from the GitHub link
-    const response = await fetch('https://github.com/username/repo/raw/branch/database-file.json');
+    const response = await fetch('https://github.com/MaleekaA/travel/raw/master/Public');
     
     if (!response.ok) {
       throw new Error('Failed to fetch database file from GitHub');
