@@ -20,22 +20,22 @@ def find_nearest_locations(places_df, malls_df, restaurants_df, place_name, n_ne
     if place_name not in places_df['place_name'].values:
         raise ValueError(f"Place name '{place_name}' not found in the dataset.")
     
-    place_coords = places_df.loc[places_df['place_name'] == place_name, ['longitude', 'latitude']].values[0]
+    place_coords = places_df.loc[places_df['place_name'] == place_name, ['latitude', 'longitude']].values[0]
     
-    mall_coords = malls_df[['longitude', 'latitude']]
+    mall_coords = malls_df[['latitude', 'longitude']]
     knn_malls = NearestNeighbors(n_neighbors=n_neighbors, algorithm='ball_tree')
     knn_malls.fit(mall_coords)
     distances_malls, indices_malls = knn_malls.kneighbors([place_coords])
     nearest_malls = malls_df.iloc[indices_malls[0]]
     
-    restaurant_coords = restaurants_df[['longitude', 'latitude']]
+    restaurant_coords = restaurants_df[['latitude', 'longitude']]
     knn_restaurants = NearestNeighbors(n_neighbors=n_neighbors, algorithm='ball_tree')
     knn_restaurants.fit(restaurant_coords)
     distances_restaurants, indices_restaurants = knn_restaurants.kneighbors([place_coords])
     nearest_restaurants = restaurants_df.iloc[indices_restaurants[0]]
     
-    nearest_malls = nearest_malls[['mall_name', 'longitude', 'latitude']].to_dict(orient='records')
-    nearest_restaurants = nearest_restaurants[['restaurant_name', 'longitude', 'latitude']].to_dict(orient='records')
+    nearest_malls = nearest_malls[['mall_name', 'latitude', 'longitude']].to_dict(orient='records')
+    nearest_restaurants = nearest_restaurants[['restaurant_name', 'latitude', 'longitude']].to_dict(orient='records')
     
     return nearest_malls, nearest_restaurants
 
