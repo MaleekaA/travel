@@ -10,11 +10,7 @@ function NearestLocations() {
   const handleSearch = async () => {
     setLoading(true);
     try {
-<<<<<<< HEAD
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/route`, {
-=======
-      const response = await fetch(`https://travel-cpun.onrender.com/api/route`, {
->>>>>>> 4651b7ced2a50ddcaf4833fe0d8b79ee300f5ecc
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

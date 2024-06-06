@@ -49,11 +49,5 @@ def nearest_locations():
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
 
-<<<<<<< HEAD
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=False)
-=======
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
-
->>>>>>> 4651b7ced2a50ddcaf4833fe0d8b79ee300f5ecc
