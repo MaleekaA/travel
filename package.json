@@ -22,6 +22,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
   },
+  "proxy": "https://travel-cpun.onrender.com",
   "eslintConfig": {
     "extends": [
       "react-app",
