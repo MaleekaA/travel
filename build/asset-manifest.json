@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/travel/build/static/css/main.d5d75b34.chunk.css",
+    "main.css": "/travel/build/static/css/main.6dca1c53.chunk.css",
     "main.js": "/travel/build/static/js/main.b07477cf.chunk.js",
     "main.js.map": "/travel/build/static/js/main.b07477cf.chunk.js.map",
     "runtime~main.js": "/travel/build/static/js/runtime~main.65abcd7d.js",
@@ -10,8 +10,8 @@
     "static/js/3.1b3c587a.chunk.js": "/travel/build/static/js/3.1b3c587a.chunk.js",
     "static/js/3.1b3c587a.chunk.js.map": "/travel/build/static/js/3.1b3c587a.chunk.js.map",
     "index.html": "/travel/build/index.html",
-    "precache-manifest.de1bbd8d61d7baee1cad8a88fb1b35ad.js": "/travel/build/precache-manifest.de1bbd8d61d7baee1cad8a88fb1b35ad.js",
+    "precache-manifest.2152a6340e2ff02fedafaf8737a808fe.js": "/travel/build/precache-manifest.2152a6340e2ff02fedafaf8737a808fe.js",
     "service-worker.js": "/travel/build/service-worker.js",
-    "static/css/main.d5d75b34.chunk.css.map": "/travel/build/static/css/main.d5d75b34.chunk.css.map"
+    "static/css/main.6dca1c53.chunk.css.map": "/travel/build/static/css/main.6dca1c53.chunk.css.map"
   }
 }

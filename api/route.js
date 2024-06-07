@@ -1,23 +1,46 @@
 const fetch = require('node-fetch');
 
+async function fetchDataFromCSV(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch CSV file from ${url}`);
+    }
+    const csvData = await response.text();
+    return csvData;
+  } catch (error) {
+    throw new Error(`Error fetching CSV data: ${error.message}`);
+  }
+}
+
 module.exports = async (req, res) => {
   const { place_name } = req.body;
 
   try {
-    // Fetch data from the GitHub link
-    const response = await fetch('https://github.com/MaleekaA/travel/raw/master/build');
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch database file from GitHub');
-    }
+    // Fetch data from the three CSV files hosted on GitHub
+    const csvUrls = [
+      'https://raw.githubusercontent.com/MaleekaA/travel/master/build/mallss.csv',
+      'https://raw.githubusercontent.com/MaleekaA/travel/master/build/restaurantss.csv',
+      'https://raw.githubusercontent.com/MaleekaA/travel/master/build/placess.csv'
+    ];
 
-    const database = await response.json();
+    const csvDataPromises = csvUrls.map(url => fetchDataFromCSV(url));
+    const [mallsData, restaurantsData, placesData] = await Promise.all(csvDataPromises);
 
-    // Process the database to find the relevant data based on place_name
-    const malls = database.malls.filter(mall => mall.location.includes(place_name));
-    const restaurants = database.restaurants.filter(restaurant => restaurant.location.includes(place_name));
+    // Process the fetched CSV data
+    const addDoubleS = (data) => {
+      return data.split('\n').map(line => {
+        const columns = line.split(',');
+        columns[0] = columns[0].replace(/\b(\w+)\b/g, '$1ss');
+        return columns.join(',');
+      }).join('\n');
+    };
 
-    res.status(200).json({ malls, restaurants });
+    const processedMallsData = addDoubleS(mallsData);
+    const processedRestaurantsData = addDoubleS(restaurantsData);
+    const processedPlacesData = addDoubleS(placesData);
+
+    res.status(200).json({ mallsData: processedMallsData, restaurantsData: processedRestaurantsData, placesData: processedPlacesData });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
