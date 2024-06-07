@@ -40,8 +40,8 @@ def find_nearest_locations(places_df, malls_df, restaurants_df, place_name, n_ne
     return nearest_malls, nearest_restaurants
 #api_url = os.getenv('REACT_APP_API_URL', '/api') 
 
-#@app.route('/api/route', methods=['POST'])
-@app.route('/https://travel-1-txo3.onrender.com/api/route', methods=['POST'])
+@app.route('/api/route', methods=['POST'])
+#@app.route('/https://travel-1-txo3.onrender.com/api/route', methods=['POST'])
 def nearest_locations():
     data = request.get_json()
     place_name = data['place_name']
