@@ -10,9 +10,9 @@ CORS(app, resources={r"/api/*": {"origins": "https://travel-1-txo3.onrender.com"
 # Load data from CSV files
 import os
 base_dir = os.path.abspath(os.path.dirname(__file__))
-places_df = pd.read_csv(os.path.join(base_dir,'..','public', 'placess.csv'))
-malls_df = pd.read_csv(os.path.join(base_dir, '..','public', 'mallss.csv'))
-restaurants_df = pd.read_csv(os.path.join(base_dir,'..', 'public', 'restaurantss.csv'))
+places_df = pd.read_csv(os.path.join(base_dir,'..','build', 'placess.csv'))
+malls_df = pd.read_csv(os.path.join(base_dir, '..','build', 'mallss.csv'))
+restaurants_df = pd.read_csv(os.path.join(base_dir,'..', 'build', 'restaurantss.csv'))
 
 
 # Function to find nearest shopping malls and restaurants given a place name
